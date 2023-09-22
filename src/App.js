@@ -1,22 +1,89 @@
-import logo from "./logo.svg";
 import "./App.css";
+import React, { useState, useEffect } from "react";
+import "font-awesome/css/font-awesome.min.css";
 
 function App() {
   const response = "thunde";
 
+  /*
+  const handleImg = () => {
+    switch (response) {
+      case value:
+        break;
+
+      default:
+        break;
+    } */
+  const [city, setCity] = useState("");
+  const [weather, setWeather] = useState(null);
+  const API_KEY = "8f94345d11d9cb5fe80962dbc5b4ed1e"; // Replace with your key
+
+  const fetchWeather = async () => {
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+      );
+      const data = await response.json();
+
+      if (data.cod === 200) {
+        setWeather(data);
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("There was an error fetching the weather data", error);
+    }
+  };
+
+  useEffect(() => {
+    const handleEnterKey = (event) => {
+      if (event.keyCode === 13) {
+        const button = document.getElementById("get-weather");
+        if (button) {
+          button.click();
+        }
+      }
+    };
+
+    // Attach the event listener
+    document.addEventListener("keydown", handleEnterKey);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      document.removeEventListener("keydown", handleEnterKey);
+    };
+  }, []);
   return (
     <div className="App">
-      <div className="App-header">
-        <div class="dropdown">
-          <img src="./hamburger_menu.png" class="dropbtn"></img>
-          <img src="./search.png" class="dropbtn"></img>
-          <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+      <header className="App-header">
+        <div className="dropbtn">
+          <div class="icon">
+            <i className="fa fa-search"></i>
+          </div>
+          <div class="input">
+            <input form="search-form" type="text" id="mysearch"></input>
+            <form id="search-form">
+              <button id="search" hidden type="submit">
+                Search
+              </button>
+            </form>
+
+            <div>
+              <input
+                type="text"
+                placeholder="Enter city name"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
+              <button onClick={fetchWeather} id="get-weather">
+                Get Weather
+              </button>
+            </div>
           </div>
         </div>
+      </header>
 
+      <body>
         <div class="row">
           <div class="column left">
             <div className="box">
@@ -59,26 +126,37 @@ function App() {
             </div>
           </div>
           <div class="column middle">
-            <div>
-              <h1>Sibiu, Romania</h1>
-            </div>
+            {weather && (
+              <div>
+                <h1>{weather.name}</h1>
+              </div>
+            )}
 
             <div className="innermiddle" id="clouds-sun">
-              <img
-                src={
-                  response === "thunder"
-                    ? "./clouds-thunder.png"
-                    : "./clouds&sun.png"
-                }
-                class="clouds-sun"
-              ></img>
+              {weather &&
+                weather.weather &&
+                weather.weather[0] &&
+                weather.weather[0].description && (
+                  <img
+                    src={`/images/${weather.weather[0].description}.png`}
+                    className="clouds-sun"
+                    alt="Weather Icon"
+                  />
+                )}
             </div>
 
             <div className="innermiddle" id="feels-like">
-              xx<sup>o</sup>
-              <p>
-                <small>Feels like:</small>
-              </p>
+              {weather &&
+                weather.main &&
+                weather.weather &&
+                weather.weather[0] && (
+                  <div>
+                    <p>{Math.round(weather.main.temp - 273.15)}°C</p>
+                    <p>
+                      <small>{weather.weather[0].description}</small>
+                    </p>
+                  </div>
+                )}
             </div>
             <div className="innermiddle" id="degrees">
               <b>F</b>
@@ -86,13 +164,20 @@ function App() {
             </div>
 
             <div className="innermiddle" id="degree">
-              H:XX<sup>o</sup>
-              L:XX<sup>o</sup>
+              <p>
+                {" "}
+                H:XX<sup>o</sup>
+              </p>
+
+              <p>
+                {" "}
+                L:XX<sup>o</sup>
+              </p>
             </div>
           </div>
           <div class="column right">
             <div className="box2">
-              <img src="./moon.png" class="fullmoon"></img>
+              <img src="/images/moon.png" class="fullmoon"></img>
               <h3>June 20, 2022</h3>
               <small>Phase: Full Moon</small>
               <p>
@@ -222,7 +307,7 @@ function App() {
             </div>
           </div>
         </div>
-      </div>
+      </body>
     </div>
   );
 }
