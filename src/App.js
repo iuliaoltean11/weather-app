@@ -13,6 +13,12 @@ function App() {
   const API_KEY = "06b10288c1d9a58d6cf466b252b2703f";
   const [forecastData, setForecastData] = useState([]);
   const [nextDayForecast, setNextDayForecast] = useState(null);
+  const [nextDayForecast2, setNextDayForecast2] = useState(null);
+  const [nextDayForecast3, setNextDayForecast3] = useState(null);
+  const [nextDayForecast4, setNextDayForecast4] = useState(null);
+  const [nextDayForecast5, setNextDayForecast5] = useState(null);
+  const [nextDayForecast6, setNextDayForecast6] = useState(null);
+  const [nextDayForecast7, setNextDayForecast7] = useState(null);
 
   const fetchNextDayForecast = async (targetCity) => {
     const options = {
@@ -36,6 +42,193 @@ function App() {
       console.error("Error fetching next day forecast:", error);
     }
   };
+
+  const fetchNextDayForecast2 = async (targetCity) => {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 2);
+
+    // Format the date to the required format
+    const formattedDate = `${currentDate.getFullYear()}-${String(
+      currentDate.getMonth() + 1
+    ).padStart(2, "0")}-${String(currentDate.getDate()).padStart(2, "0")}`;
+
+    const options = {
+      method: "GET",
+      url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
+      params: {
+        q: targetCity,
+        days: "1",
+        dt: formattedDate, // This can be made dynamic based on your needs
+      },
+      headers: {
+        "X-RapidAPI-Key": "930fa074ecmshc8073cd18305a48p147ed6jsn943c497ba270",
+        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+      },
+    };
+
+    try {
+      const response = await axios.request(options);
+      setNextDayForecast2(response.data);
+    } catch (error) {
+      console.error("Error fetching next day forecast:", error);
+    }
+  };
+
+  const fetchNextDayForecast3 = async (targetCity) => {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 3);
+
+    // Format the date to the required format
+    const formattedDate = `${currentDate.getFullYear()}-${String(
+      currentDate.getMonth() + 1
+    ).padStart(2, "0")}-${String(currentDate.getDate()).padStart(2, "0")}`;
+
+    const options = {
+      method: "GET",
+      url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
+      params: {
+        q: targetCity,
+        days: "1",
+        dt: formattedDate, // This can be made dynamic based on your needs
+      },
+      headers: {
+        "X-RapidAPI-Key": "930fa074ecmshc8073cd18305a48p147ed6jsn943c497ba270",
+        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+      },
+    };
+
+    try {
+      const response = await axios.request(options);
+      setNextDayForecast3(response.data);
+    } catch (error) {
+      console.error("Error fetching next day forecast:", error);
+    }
+  };
+
+  const fetchNextDayForecast4 = async (targetCity) => {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 4);
+
+    // Format the date to the required format
+    const formattedDate = `${currentDate.getFullYear()}-${String(
+      currentDate.getMonth() + 1
+    ).padStart(2, "0")}-${String(currentDate.getDate()).padStart(2, "0")}`;
+
+    const options = {
+      method: "GET",
+      url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
+      params: {
+        q: targetCity,
+        days: "1",
+        dt: formattedDate, // This can be made dynamic based on your needs
+      },
+      headers: {
+        "X-RapidAPI-Key": "930fa074ecmshc8073cd18305a48p147ed6jsn943c497ba270",
+        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+      },
+    };
+
+    try {
+      const response = await axios.request(options);
+      setNextDayForecast4(response.data);
+    } catch (error) {
+      console.error("Error fetching next day forecast:", error);
+    }
+  };
+
+  const fetchNextDayForecast5 = async (targetCity) => {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 5);
+
+    // Format the date to the required format
+    const formattedDate = `${currentDate.getFullYear()}-${String(
+      currentDate.getMonth() + 1
+    ).padStart(2, "0")}-${String(currentDate.getDate()).padStart(2, "0")}`;
+
+    const options = {
+      method: "GET",
+      url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
+      params: {
+        q: targetCity,
+        days: "1",
+        dt: formattedDate, // This can be made dynamic based on your needs
+      },
+      headers: {
+        "X-RapidAPI-Key": "930fa074ecmshc8073cd18305a48p147ed6jsn943c497ba270",
+        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+      },
+    };
+
+    try {
+      const response = await axios.request(options);
+      setNextDayForecast5(response.data);
+    } catch (error) {
+      console.error("Error fetching next day forecast:", error);
+    }
+  };
+
+  const fetchNextDayForecast6 = async (targetCity) => {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 6);
+
+    // Format the date to the required format
+    const formattedDate = `${currentDate.getFullYear()}-${String(
+      currentDate.getMonth() + 1
+    ).padStart(2, "0")}-${String(currentDate.getDate()).padStart(2, "0")}`;
+
+    const options = {
+      method: "GET",
+      url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
+      params: {
+        q: targetCity,
+        days: "1",
+        dt: formattedDate, // This can be made dynamic based on your needs
+      },
+      headers: {
+        "X-RapidAPI-Key": "930fa074ecmshc8073cd18305a48p147ed6jsn943c497ba270",
+        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+      },
+    };
+
+    try {
+      const response = await axios.request(options);
+      setNextDayForecast6(response.data);
+    } catch (error) {
+      console.error("Error fetching next day forecast:", error);
+    }
+  };
+
+  const fetchNextDayForecast7 = async (targetCity) => {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 7);
+
+    // Format the date to the required format
+    const formattedDate = `${currentDate.getFullYear()}-${String(
+      currentDate.getMonth() + 1
+    ).padStart(2, "0")}-${String(currentDate.getDate()).padStart(2, "0")}`;
+
+    const options = {
+      method: "GET",
+      url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
+      params: {
+        q: targetCity,
+        days: "1",
+        dt: formattedDate, // This can be made dynamic based on your needs
+      },
+      headers: {
+        "X-RapidAPI-Key": "930fa074ecmshc8073cd18305a48p147ed6jsn943c497ba270",
+        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+      },
+    };
+
+    try {
+      const response = await axios.request(options);
+      setNextDayForecast7(response.data);
+    } catch (error) {
+      console.error("Error fetching next day forecast:", error);
+    }
+  };
+
   const fetchMoonPhase = async (city) => {
     const options = {
       method: "GET",
@@ -141,6 +334,12 @@ function App() {
       if (event.key === "Enter") {
         fetchWeather();
         fetchNextDayForecast(city);
+        fetchNextDayForecast2(city);
+        fetchNextDayForecast3(city);
+        fetchNextDayForecast4(city);
+        fetchNextDayForecast5(city);
+        fetchNextDayForecast6(city);
+        fetchNextDayForecast7(city);
       }
     };
 
@@ -174,6 +373,12 @@ function App() {
                     if (e.keyCode === 13) {
                       fetchWeather();
                       fetchNextDayForecast(city);
+                      fetchNextDayForecast2(city);
+                      fetchNextDayForecast3(city);
+                      fetchNextDayForecast4(city);
+                      fetchNextDayForecast5(city);
+                      fetchNextDayForecast6(city);
+                      fetchNextDayForecast7(city);
                     }
                   }}
                   placeholder="Enter city name"
@@ -465,91 +670,21 @@ function App() {
           <div className="column-days2">
             <div className="box-days">
               <p>Sunday</p>
-              <img src=""></img>
-              <p>
-                H: 30<sup>o</sup> L:14<sup>o</sup>
-              </p>
-              <p>mostly sunny</p>
-            </div>
-          </div>
-          <div className="column-days2">
-            <div className="box-days">
-              <p>Monday</p>
-              <img src=""></img>
-              <p>
-                H: 30<sup>o</sup> L:14<sup>o</sup>
-              </p>
-              <p>mostly sunny</p>
-            </div>
-          </div>
-          <div className="column-days2">
-            <div className="box-days">
-              <p>Tuesday</p>
-              <img src=""></img>
-              <p>
-                H: 30<sup>o</sup> L:14<sup>o</sup>
-              </p>
-              <p>mostly sunny</p>
-            </div>
-          </div>
-          <div className="column-days2">
-            <div className="box-days">
-              <p>Wednesday</p>
-              <img src=""></img>
-              <p>
-                H: 30<sup>o</sup> L:14<sup>o</sup>
-              </p>
-              <p>mostly sunny</p>
-            </div>
-          </div>
-          <div className="column-days2">
-            <div className="box-days">
-              <p>Thursday</p>
-              <img src=""></img>
-              <p>
-                H: 30<sup>o</sup> L:14<sup>o</sup>
-              </p>
-              <p>mostly sunny</p>
-            </div>
-          </div>
-          <div className="column-days2">
-            <div className="box-days">
-              <p>Friday</p>
-              <img src=""></img>
-              <p>
-                H: 30<sup>o</sup> L:14<sup>o</sup>
-              </p>
-              <p>mostly sunny</p>
-            </div>
-          </div>
-          <div className="column-days2">
-            <div className="box-days">
-              <p>Saturday</p>
-              <img src=""></img>
-              <p>
-                H: 30<sup>o</sup> L:14<sup>o</sup>
-              </p>
-              <p>mostly sunny</p>
-            </div>
-          </div>
-          <div>
-            <div className="row">
               {nextDayForecast &&
               nextDayForecast.location &&
               nextDayForecast.forecast &&
               nextDayForecast.forecast.forecastday &&
               nextDayForecast.forecast.forecastday[0] ? (
                 <>
-                  <h2>
-                    Forecast for {nextDayForecast.location.name} on{" "}
-                    {nextDayForecast.forecast.forecastday[0].date}
-                  </h2>
+                  <img
+                    src={`/images/${nextDayForecast.forecast.forecastday[0].day.condition.text}.png`}
+                    className="clouds-sun"
+                    alt="Weather Icon"
+                  />
                   <p>
-                    Temperature:{" "}
-                    {nextDayForecast.forecast.forecastday[0].day.avgtemp_c}°C
+                    T: {nextDayForecast.forecast.forecastday[0].day.avgtemp_c}°C
                   </p>
                   <p>
-                    Condition:{" "}
                     {nextDayForecast.forecast.forecastday[0].day.condition.text}
                   </p>
                 </>
@@ -557,8 +692,186 @@ function App() {
                 <p>Loading forecast...</p>
               )}
             </div>
-
-            <div className="row"></div>
+          </div>
+          <div className="column-days2">
+            <div className="box-days">
+              <p>Monday</p>
+              {nextDayForecast2 &&
+              nextDayForecast2.location &&
+              nextDayForecast2.forecast &&
+              nextDayForecast2.forecast.forecastday &&
+              nextDayForecast2.forecast.forecastday[0] ? (
+                <>
+                  <img
+                    src={`/images/${nextDayForecast2.forecast.forecastday[0].day.condition.text}.png`}
+                    className="clouds-sun"
+                    alt="Weather Icon"
+                  />
+                  <p>
+                    T: {nextDayForecast2.forecast.forecastday[0].day.avgtemp_c}
+                    °C
+                  </p>
+                  <p>
+                    {
+                      nextDayForecast2.forecast.forecastday[0].day.condition
+                        .text
+                    }
+                  </p>
+                </>
+              ) : (
+                <p>Loading forecast...</p>
+              )}
+            </div>
+          </div>
+          <div className="column-days2">
+            <div className="box-days">
+              <p>Tuesday</p>
+              {nextDayForecast3 &&
+              nextDayForecast3.location &&
+              nextDayForecast3.forecast &&
+              nextDayForecast3.forecast.forecastday &&
+              nextDayForecast3.forecast.forecastday[0] ? (
+                <>
+                  <img
+                    src={`/images/${nextDayForecast3.forecast.forecastday[0].day.condition.text}.png`}
+                    className="clouds-sun"
+                    alt="Weather Icon"
+                  />
+                  <p>
+                    T: {nextDayForecast3.forecast.forecastday[0].day.avgtemp_c}
+                    °C
+                  </p>
+                  <p>
+                    {
+                      nextDayForecast3.forecast.forecastday[0].day.condition
+                        .text
+                    }
+                  </p>
+                </>
+              ) : (
+                <p>Loading forecast...</p>
+              )}
+            </div>
+          </div>
+          <div className="column-days2">
+            <div className="box-days">
+              <p>Wednesday</p>
+              {nextDayForecast4 &&
+              nextDayForecast4.location &&
+              nextDayForecast4.forecast &&
+              nextDayForecast4.forecast.forecastday &&
+              nextDayForecast4.forecast.forecastday[0] ? (
+                <>
+                  <img
+                    src={`/images/${nextDayForecast4.forecast.forecastday[0].day.condition.text}.png`}
+                    className="clouds-sun"
+                    alt="Weather Icon"
+                  />
+                  <p>
+                    T: {nextDayForecast4.forecast.forecastday[0].day.avgtemp_c}
+                    °C
+                  </p>
+                  <p>
+                    {
+                      nextDayForecast4.forecast.forecastday[0].day.condition
+                        .text
+                    }
+                  </p>
+                </>
+              ) : (
+                <p>Loading forecast...</p>
+              )}
+            </div>
+          </div>
+          <div className="column-days2">
+            <div className="box-days">
+              <p>Thursday</p>
+              {nextDayForecast5 &&
+              nextDayForecast5.location &&
+              nextDayForecast5.forecast &&
+              nextDayForecast5.forecast.forecastday &&
+              nextDayForecast5.forecast.forecastday[0] ? (
+                <>
+                  <img
+                    src={`/images/${nextDayForecast5.forecast.forecastday[0].day.condition.text}.png`}
+                    className="clouds-sun"
+                    alt="Weather Icon"
+                  />
+                  <p>
+                    T: {nextDayForecast5.forecast.forecastday[0].day.avgtemp_c}
+                    °C
+                  </p>
+                  <p>
+                    {
+                      nextDayForecast5.forecast.forecastday[0].day.condition
+                        .text
+                    }
+                  </p>
+                </>
+              ) : (
+                <p>Loading forecast...</p>
+              )}
+            </div>
+          </div>
+          <div className="column-days2">
+            <div className="box-days">
+              <p>Friday</p>
+              {nextDayForecast6 &&
+              nextDayForecast6.location &&
+              nextDayForecast6.forecast &&
+              nextDayForecast6.forecast.forecastday &&
+              nextDayForecast6.forecast.forecastday[0] ? (
+                <>
+                  <img
+                    src={`/images/${nextDayForecast6.forecast.forecastday[0].day.condition.text}.png`}
+                    className="clouds-sun"
+                    alt="Weather Icon"
+                  />
+                  <p>
+                    T: {nextDayForecast6.forecast.forecastday[0].day.avgtemp_c}
+                    °C
+                  </p>
+                  <p>
+                    {
+                      nextDayForecast6.forecast.forecastday[0].day.condition
+                        .text
+                    }
+                  </p>
+                </>
+              ) : (
+                <p>Loading forecast...</p>
+              )}
+            </div>
+          </div>
+          <div className="column-days2">
+            <div className="box-days">
+              <p>Saturday</p>
+              {nextDayForecast7 &&
+              nextDayForecast7.location &&
+              nextDayForecast7.forecast &&
+              nextDayForecast7.forecast.forecastday &&
+              nextDayForecast7.forecast.forecastday[0] ? (
+                <>
+                  <img
+                    src={`/images/${nextDayForecast7.forecast.forecastday[0].day.condition.text}.png`}
+                    className="clouds-sun"
+                    alt="Weather Icon"
+                  />
+                  <p>
+                    T: {nextDayForecast7.forecast.forecastday[0].day.avgtemp_c}
+                    °C
+                  </p>
+                  <p>
+                    {
+                      nextDayForecast7.forecast.forecastday[0].day.condition
+                        .text
+                    }
+                  </p>
+                </>
+              ) : (
+                <p>Loading forecast...</p>
+              )}
+            </div>
           </div>
         </div>
       </body>
