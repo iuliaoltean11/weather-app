@@ -10,7 +10,7 @@ function App() {
   const [city, setCity] = useState("Sibiu");
   const [weather, setWeather] = useState(null);
   const [moonDetails, setMoonDetails] = useState(null);
-  const API_KEY = "06b10288c1d9a58d6cf466b252b2703f";
+  const API_KEY = "8f94345d11d9cb5fe80962dbc5b4ed1e";
   const [forecastData, setForecastData] = useState([]);
   const [nextDayForecast, setNextDayForecast] = useState(null);
   const [nextDayForecast2, setNextDayForecast2] = useState(null);
@@ -397,12 +397,17 @@ function App() {
           <div className="column left">
             <div className="box">
               <h3>Air Quality</h3>
-              {weather && weather.air_quality && weather.air_quality.list && (
+              {weather && weather.air_quality && weather.air_quality.list ? (
                 <div>
                   <h4>{weather.air_quality.list[0].main.aqi}</h4>
                   <small>
                     {getAirQualityText(weather.air_quality.list[0].main.aqi)}
                   </small>
+                </div>
+              ) : (
+                <div>
+                  <h4>N/A</h4>
+                  <small>No data available</small>
                 </div>
               )}
             </div>
@@ -422,29 +427,43 @@ function App() {
             </div>
             <div className="box">
               <h3>Wind</h3>
-              {weather && weather.wind && (
+              {weather && weather.wind ? (
                 <div>
-                  <h4>{weather.wind.speed} </h4>
+                  <h4>{weather.wind.speed}</h4>
                   <small>mph kmph</small>
+                </div>
+              ) : (
+                <div>
+                  <h4>N/A</h4>
+                  <small>No data available</small>
                 </div>
               )}
             </div>
             <div className="box">
               <h3>Pressure</h3>
-              {weather && weather.main && (
+              {weather && weather.main ? (
                 <div>
                   <h4>{weather.main.pressure}</h4>
                   <small>mb in</small>
+                </div>
+              ) : (
+                <div>
+                  <h4>N/A</h4>
+                  <small>No data available</small>
                 </div>
               )}
             </div>
             <div className="box">
               <h3>Visibility</h3>
-
-              {weather && weather.visibility && (
+              {weather && weather.visibility ? (
                 <div>
                   <h4>{weather.visibility / 1000}</h4>
                   <small> km mi</small>
+                </div>
+              ) : (
+                <div>
+                  <h4>N/A</h4>
+                  <small>No data available</small>
                 </div>
               )}
             </div>
@@ -497,20 +516,38 @@ function App() {
                 )}
             </div>
             <div className="innermiddle" id="degrees">
-              <b>F</b>
-              <p>C</p>
+              {weather &&
+                weather.main &&
+                weather.weather &&
+                weather.weather[0] && (
+                  <div>
+                    <p>
+                      {Math.round(((weather.main.temp - 273.15) * 9) / 5 + 32)}
+                      °F
+                    </p>
+                  </div>
+                )}
             </div>
 
             <div className="innermiddle" id="degree">
               {weather && (
                 <div>
                   <p>
-                    H: {weather.main.temp_max.toFixed(1)}
+                    H: {Math.round(weather.main.temp_max.toFixed(1) - 273.15)}
+                    <sup>°</sup>C &nbsp; &nbsp; L:{" "}
+                    {Math.round(weather.main.temp_min.toFixed(1) - 273.15)}
                     <sup>°</sup>C
                   </p>
-                  <p>
-                    L: {weather.main.temp_min.toFixed(1)}
-                    <sup>°</sup>C
+                  <p id="high-low">
+                    H:{" "}
+                    {Math.round(
+                      ((weather.main.temp_max - 273.15) * 9) / 5 + 32
+                    )}
+                    <sup>°</sup>F &nbsp; &nbsp; L:{" "}
+                    {Math.round(
+                      ((weather.main.temp_min - 273.15) * 9) / 5 + 32
+                    )}
+                    <sup>°</sup>F
                   </p>
                 </div>
               )}
